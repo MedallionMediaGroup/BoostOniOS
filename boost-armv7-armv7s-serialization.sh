@@ -19,7 +19,7 @@
 #===============================================================================
 
 # : ${BOOST_LIBS:="thread signals filesystem regex system date_time"}
-: ${BOOST_LIBS:="serialization"}
+: ${BOOST_LIBS:="serialization system"}
 : ${IPHONE_SDKVERSION:=6.1}
 : ${OSX_SDKVERSION:=10.8}
 : ${XCODE_ROOT:=`xcode-select -print-path`}
@@ -260,7 +260,7 @@ buildFramework()
     FRAMEWORK_INSTALL_NAME=$FRAMEWORK_BUNDLE/Versions/$FRAMEWORK_VERSION/$FRAMEWORK_NAME
 
     echo "Lipoing library into $FRAMEWORK_INSTALL_NAME..."
-    $ARM_DEV_DIR/lipo -create $BUILDDIR/armv7/libboost.a $BUILDDIR/armv7s/libboost.a -o "$FRAMEWORK_INSTALL_NAME" || abort "Lipo $1 failed"
+    $ARM_DEV_DIR/lipo -create $BUILDDIR/armv7/libboost.a $BUILDDIR/armv7s/libboost.a $BUILDDIR/i386/libboost.a -o "$FRAMEWORK_INSTALL_NAME" || abort "Lipo $1 failed"
 
     echo "Framework: Copying includes..."
     ##cp -r $PREFIXDIR/include/boost/*  $FRAMEWORK_BUNDLE/Headers/
