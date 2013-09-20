@@ -19,7 +19,7 @@
 #===============================================================================
 
 # : ${BOOST_LIBS:="thread signals filesystem regex system date_time"}
-: ${BOOST_LIBS:="serialization system"}
+: ${BOOST_LIBS:="serialization filesystem system"}
 : ${IPHONE_SDKVERSION:=6.1}
 : ${OSX_SDKVERSION:=10.8}
 : ${XCODE_ROOT:=`xcode-select -print-path`}
